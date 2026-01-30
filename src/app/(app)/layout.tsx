@@ -22,7 +22,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     }
   }, [isAuthenticated, router]);
 
-  if (isAuthenticated === undefined || !isAuthenticated) {
+  if (isAuthenticated === undefined || isAuthenticated === false) {
     return (
       <div className="flex h-screen items-center justify-center bg-background">
         <div className="flex items-center space-x-4">

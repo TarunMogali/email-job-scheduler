@@ -3,13 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Archive,
   FileClock,
   Inbox,
   Send,
-  Sidebar as SidebarIcon,
-  Star,
-  Trash2,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -20,18 +16,14 @@ import {
   SidebarContent,
   SidebarTrigger,
   SidebarGroup,
-  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import { Button } from './ui/button';
 import { ComposeDialog } from './compose-dialog';
 
 const menuItems = [
   { href: '/inbox', label: 'Inbox', icon: Inbox },
-  { href: '/starred', label: 'Starred', icon: Star },
   { href: '/sent', label: 'Sent', icon: Send },
   { href: '/scheduled', label: 'Scheduled', icon: FileClock },
-  { href: '/archive', label: 'Archive', icon: Archive },
-  { href: '/trash', label: 'Trash', icon: Trash2 },
 ];
 
 export function AppSidebar() {
@@ -42,7 +34,7 @@ export function AppSidebar() {
       <SidebarHeader className="h-14 items-center justify-between border-b p-2">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
-            <Link href="/scheduled">
+            <Link href="/inbox">
               <Send className="h-5 w-5 text-primary" />
             </Link>
           </Button>
@@ -64,7 +56,7 @@ export function AppSidebar() {
               <SidebarMenuItem key={item.href}>
                 <Link href={item.href} legacyBehavior passHref>
                   <SidebarMenuButton
-                    isActive={pathname === item.href}
+                    isActive={pathname.startsWith(item.href)}
                     tooltip={item.label}
                   >
                     <item.icon />

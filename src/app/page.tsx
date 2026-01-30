@@ -13,7 +13,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push('/scheduled');
+      router.push('/inbox');
     }
   }, [isAuthenticated, router]);
   
@@ -22,7 +22,7 @@ export default function LoginPage() {
       name: 'John Doe',
       email: 'john.doe@example.com',
     });
-    router.push('/scheduled');
+    router.push('/inbox');
   };
 
   return (
